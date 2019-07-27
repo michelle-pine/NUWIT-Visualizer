@@ -3,7 +3,7 @@ import NUWITVisualizer from './nuwit_visualizer'
 
 if (window.location.hash === '#start') {
   // const template = new Template()
-  const example = new Example()
+  const visualizer = new NUWITVisualizer()
 } else {
   auth()
 }

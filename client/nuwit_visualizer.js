@@ -16,7 +16,6 @@ export default class NUWITVisualizer extends Visualizer {
   hooks () {
     this.sync.on('bar', bar => {
       this.direction = this.direction * -1;
-      console.log(this.sync)
     })
   }
 
@@ -35,7 +34,7 @@ export default class NUWITVisualizer extends Visualizer {
     ctx.fillRect(0, 0, width, height)
     ctx.lineWidth = beat
     ctx.strokeStyle = 'white'
-    sin(ctx, now / 50, height / 2, this.sync.volume * 50, 100)
+    sin(ctx, now / 100, height / 2, this.sync.volume * 50, 100)
     ctx.stroke()
 
     var circleX = width/ 2;
