@@ -26,7 +26,6 @@ export default class NUWITVisualizer extends Visualizer {
     this.deg = (this.deg + 1 % 360);
     ctx.fillStyle = 'white'
     var gradient = ctx.createLinearGradient(0,0, width,height);
-
     gradient.addColorStop(0, '#009897');
     gradient.addColorStop(.5, '#00b7b4');
     gradient.addColorStop(1, '#009897');
