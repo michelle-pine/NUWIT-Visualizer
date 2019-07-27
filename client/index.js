@@ -1,6 +1,5 @@
 import { auth } from './classes/sync'
-import Template from './template'
-import Example from './example'
+import NUWITVisualizer from './nuwit_visualizer'
 
 if (window.location.hash === '#start') {
   // const template = new Template()

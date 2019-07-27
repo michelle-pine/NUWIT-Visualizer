@@ -1,9 +1,8 @@
 import Visualizer from './classes/visualizer'
-import { interpolateRgb, interpolateBasis } from 'd3-interpolate'
-import { getRandomElement } from './util/array'
+import { interpolateBasis } from 'd3-interpolate'
 import { sin, circle } from './util/canvas'
 
-export default class Example extends Visualizer {
+export default class NUWITVisualizer extends Visualizer {
   constructor () {
     super({ volumeSmoothing: 20 })
     this.heights = {}
