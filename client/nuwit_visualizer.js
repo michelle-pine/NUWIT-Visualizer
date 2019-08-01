@@ -10,6 +10,7 @@ export default class NUWITVisualizer extends Visualizer {
       this.heights[i] = Math.floor(Math.random() * Math.floor(20));
     }
     this.deg = 0;
+    this.spinDeg = 0;
     this.direction = 1;
   }
 
@@ -21,8 +22,9 @@ export default class NUWITVisualizer extends Visualizer {
 
   paint ({ ctx, height, width, now }) {
     const beat = interpolateBasis([0, this.sync.volume * 100, 0])(this.sync.beat.progress)
+    var circleX = width / 2;
+    var circleY = height / 2;
     ctx.save();
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
     this.deg = (this.deg + 1 % 360);
     ctx.fillStyle = 'white'
     var gradient = ctx.createLinearGradient(0,0, width,height);
@@ -32,17 +34,14 @@ export default class NUWITVisualizer extends Visualizer {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height)
     ctx.lineWidth = beat
-    ctx.strokeStyle = 'white'
-    sin(ctx, now / 100, height / 2, this.sync.volume * 50, 100)
+    ctx.strokeStyle = 'white';
+    ctx.setTransform(1,0,0,.5, 0, circleY);
+    sin(ctx, now / 100, 0, this.sync.volume * 50, 100)
     ctx.stroke()
-
-    var circleX = width/ 2;
-    var circleY = height / 2;
     var bars = 50;
     var barWidth = height / 100;
     var barHeight = beat + height / 10;
     var radius = height / 5;
-    ctx.scale(1.5, 1.5);
     ctx.setTransform(1,0,0,1, circleX, circleY);
     circle(ctx, 0, 0, radius)
     ctx.lineWidth = this.sync.volume * height / 4;
@@ -63,8 +62,8 @@ export default class NUWITVisualizer extends Visualizer {
       ctx.rotate(rad);
       ctx.rotate((this.deg * this.direction) * Math.PI / 180);
       ctx.translate(0, radius);
+
       // draw the bar
-      ctx.scale(1.5, 1.5);
       ctx.fillRect(
         -barWidth/2, 
         0, 
@@ -73,7 +72,8 @@ export default class NUWITVisualizer extends Visualizer {
       );
       counter++;
     }
-    ctx.restore()
+    ctx.restore();
+    ctx.setTransform(1,0,0,1, 0, 0);
     ctx.font = "15px Open Sans";
     ctx.fillStyle = "black";
     ctx.fillText("Now Playing ♬", 20, height - 78);

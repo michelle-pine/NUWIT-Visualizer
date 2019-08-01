@@ -31,8 +31,6 @@ export default class Sketch {
     this.height = window.innerHeight
     this.canvas.width = this.width * dpi
     this.canvas.height = this.height * dpi
-    this.canvas.style.transformOrigin = 'top left'
-    this.canvas.style.transform = `scale(${1/dpi})`
     this.ctx.scale(dpi, dpi) 
   }
   
