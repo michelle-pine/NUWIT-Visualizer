@@ -28,12 +28,9 @@ export default class NUWITVisualizer extends Visualizer {
     this.deg = (this.deg + 1 % 360);
     ctx.fillStyle = 'white'
     var gradient = ctx.createLinearGradient(0,0, width,height);
-    // gradient.addColorStop(0, '#009897');
-    // gradient.addColorStop(.5, '#00b7b4');
-    // gradient.addColorStop(1, '#009897');
-    gradient.addColorStop(0, '#FF7733');
-    gradient.addColorStop(.5, '#FF7733');
-    gradient.addColorStop(1, '#FF7733');
+    gradient.addColorStop(0, '#009897');
+    gradient.addColorStop(.5, '#00b7b4');
+    gradient.addColorStop(1, '#009897');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height)
     ctx.lineWidth = beat
@@ -53,8 +50,7 @@ export default class NUWITVisualizer extends Visualizer {
     ctx.fill()
     ctx.stroke();
     circle(ctx, 0, 0, radius - height / 50)
-    //ctx.fillStyle = "#00b7b4"
-    ctx.fillStyle = "#FF7733"
+    ctx.fillStyle = "#00b7b4"
     ctx.lineWidth = 0;
     ctx.stroke();
     ctx.fill()
